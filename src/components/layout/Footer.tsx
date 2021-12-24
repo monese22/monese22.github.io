@@ -13,7 +13,7 @@ const images = [
 
 export default function Footer() {
   return (
-    <footer className='bg-mnFooterBg flex justify-evenly py-10 mt-10'>
+    <footer className='bg-mnFooterBg flex justify-evenly py-10'>
       <div className='flex flex-col items-center'>
         {/* Logo */}
         <UnstyledLink href='/'>

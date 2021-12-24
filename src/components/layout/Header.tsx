@@ -3,8 +3,8 @@ import * as React from 'react';
 
 import UnstyledLink from '../links/UnstyledLink';
 
-// this data must be redesign
-const navigations = ['Series', 'Shorts', 'Genere', 'Years'];
+// this is dummy data for navigation bar, and it must be redesign
+const dummyNavItems = ['Series', 'Shorts', 'Genere', 'Years'];
 
 export default function Header() {
   return (
@@ -20,10 +20,11 @@ export default function Header() {
         <span className='pl-2 text-2xl font-semibold uppercase'>Monsese</span>
       </UnstyledLink>
 
-      <div className='relative w-1/4 h-10 rounded-full'>
+      {/* search bar */}
+      <div className='relative w-1/4 h-auto rounded-full'>
         <div className='absolute'>
           <svg
-            className='text-white/60 ml-2 w-8 h-10 scale-50 translate-y-1 fill-current'
+            className='text-mnwhite ml-2 w-8 h-10 scale-50 translate-y-1 fill-current'
             xmlns='http://www.w3.org/2000/svg'
             spacing='preserve'
           >
@@ -35,15 +36,19 @@ export default function Header() {
             type='text'
             placeholder='Search'
             id='search'
-            className='pl-10 w-full bg-transparent rounded-full'
+            className='pl-10 w-full bg-transparent rounded-full transition-all duration-300 hover:placeholder:text-mnWhite'
           />
         </form>
       </div>
 
       {/* This part need to change when implementing data */}
-      <nav className='text-mnWhite/50 text-semibold space-x-2'>
-        {navigations.map((nav) => (
-          <UnstyledLink href='#' key={nav} className='hover:text-white'>
+      <nav className='text-mnWhite/80 text-semibold space-x-2'>
+        {dummyNavItems.map((nav) => (
+          <UnstyledLink
+            href='#'
+            key={nav}
+            className='transition hover:text-white'
+          >
             {nav}{' '}
           </UnstyledLink>
         ))}
