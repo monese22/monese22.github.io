@@ -5,7 +5,7 @@ export default function NewReleasePane() {
     <div className='relative'>
       {/* image name need to be dynamic and need to add hyper link */}
       <span className='text-lg font-semibold'>New releases:</span>
-      <div className='h-[400px] w-[1160px] overflow-hidden mt-1 rounded-xl'>
+      <div className='h-[400px] max-w-[1160px] overflow-hidden mt-1 rounded-xl'>
         <NextImage
           src='/images/posters/shang-chi-1.png'
           width={1160}
