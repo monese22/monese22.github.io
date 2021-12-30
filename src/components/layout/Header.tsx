@@ -4,7 +4,13 @@ import * as React from 'react';
 import UnstyledLink from '../links/UnstyledLink';
 
 // this is dummy data for navigation bar, and it must be redesign
-const dummyNavItems = ['Series', 'Shorts', 'Genere', 'Years'];
+const dummyNavItems = [
+  'Series',
+  'Shorts',
+  'Genere',
+  'Years',
+  'How to Download',
+];
 
 export default function Header() {
   return (
@@ -19,6 +25,19 @@ export default function Header() {
         />
         <span className='pl-2 text-2xl font-semibold uppercase'>Monsese</span>
       </UnstyledLink>
+
+      {/* This part need to change when implementing data */}
+      <nav className='text-mnWhite/80 text-semibold space-x-2'>
+        {dummyNavItems.map((nav) => (
+          <UnstyledLink
+            href='#'
+            key={nav}
+            className='font-semibold transition hover:text-white'
+          >
+            {nav}{' '}
+          </UnstyledLink>
+        ))}
+      </nav>
 
       {/* search bar */}
       <div className='relative w-1/4 h-auto rounded-full'>
@@ -40,19 +59,6 @@ export default function Header() {
           />
         </form>
       </div>
-
-      {/* This part need to change when implementing data */}
-      <nav className='text-mnWhite/80 text-semibold space-x-2'>
-        {dummyNavItems.map((nav) => (
-          <UnstyledLink
-            href='#'
-            key={nav}
-            className='transition hover:text-white'
-          >
-            {nav}{' '}
-          </UnstyledLink>
-        ))}
-      </nav>
     </header>
   );
 }
