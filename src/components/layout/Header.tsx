@@ -27,7 +27,7 @@ export default function Header() {
       </UnstyledLink>
 
       {/* This part need to change when implementing data */}
-      <nav className='text-mnWhite/80 text-semibold space-x-2'>
+      <nav className='text-mnWhite/80 text-semibold space-x-4'>
         {dummyNavItems.map((nav) => (
           <UnstyledLink
             href='#'
