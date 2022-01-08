@@ -3,8 +3,8 @@ title: Spyder-Man - Far From Home
 imdbRating: 8.5
 release: 2020
 poster:
-  - large: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-large.jpg'
-  - small: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-small.png'
+  large: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-large.jpg'
+  small: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-small.png'
 ---
 
 ## Story Line

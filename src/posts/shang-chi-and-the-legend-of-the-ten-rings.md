@@ -3,8 +3,8 @@ title: Shang Chi and The Legend of The Ten Rings
 imdbRating: 7.5
 release: 2021
 poster:
-  - large: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-large.png'
-    small: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-small.png'
+  large: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-large.png'
+  small: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-small.png'
 ---
 
 ## Story Line
