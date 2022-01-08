@@ -8,26 +8,45 @@ import html from 'remark-html';
 const POSTS_DIRECTORY = path.join(process.cwd(), 'src/posts');
 const MOVIE_POST_FILE_NAMES = fs.readdirSync(POSTS_DIRECTORY);
 
-// get all movies data in js array
-export function getMoviesData(): { id: string }[] {
-  const allMoviesData = MOVIE_POST_FILE_NAMES.map((fileName) => {
-    // read file name and remove extension to get id
-    const id = fileName.replace(/\.md$/, '');
+/* TODO
 
-    // read markdown file as string
-    const fullpath = path.join(POSTS_DIRECTORY, fileName);
-    const fileContent = fs.readFileSync(fullpath, 'utf-8');
+need to add type information to matterResult.data
+The `getMoviesData` function return the array of object `MovieData` but cannot add
+type information, because the type of matterResult is `[key: string]: any`
+*/
 
-    const matterResult = matter(fileContent);
+type MovieData = {
+  id: string;
+  postRoute: string;
+  //   title: string,
+  //   imdbRating: number,
+  //   release: number,
+  //   poster: {
+  //     small: string,
+  //     large: string
+  //   }
+};
+
+type GetMoviesData = () => MovieData[];
+
+export const getMoviesData: GetMoviesData = () => {
+  const allMoviesData = MOVIE_POST_FILE_NAMES.map((filename) => {
+    const id = filename.replace(/.md$/, '');
+
+    const fullPath = path.join(POSTS_DIRECTORY, filename);
+    const fileContent = fs.readFileSync(fullPath, 'utf-8');
+
+    const matterResult: matter.GrayMatterFile<string> = matter(fileContent);
 
     return {
       id,
+      postRoute: `/details/${id}`,
       ...matterResult.data,
     };
   });
 
   return allMoviesData;
-}
+};
 
 export function getAllMoviesId() {
   return MOVIE_POST_FILE_NAMES.map((moviePostFile) => {
