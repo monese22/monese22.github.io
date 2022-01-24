@@ -5,6 +5,7 @@ import UnstyledLink from '../links/UnstyledLink';
 
 // this is dummy data for navigation bar, and it must be redesign
 const dummyNavItems = [
+  'Movies',
   'Series',
   'Shorts',
   'Genere',
@@ -27,7 +28,7 @@ export default function Header() {
           <span className='pl-2 text-2xl font-semibold uppercase'>Monsese</span>
         </UnstyledLink>
         {/* This part need to change when implementing data */}
-        <nav className='text-mnWhite/80 text-semibold space-x-4'>
+        <nav className='text-mnWhite/80 text-semibold space-x-6'>
           {dummyNavItems.map((nav) => (
             <UnstyledLink
               href='#'
