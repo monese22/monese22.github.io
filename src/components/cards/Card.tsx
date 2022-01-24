@@ -1,23 +1,24 @@
 import UnstyledLink from '../links/UnstyledLink';
 import NextImage from '../NextImage';
 
-type CardProps = {
+export type CardProps = {
   href: string; // route to detail page
-  rating: number; // imdb rating number
+  imdbRating: number;
   posterPath: string; // path which is used to render the image
   posterName: string; // used in image `alt` attribute
-  title: string; // title of the movie
+  title: string;
+  releaseYear: number;
 };
 
 export default function Card(props: CardProps) {
   return (
     <UnstyledLink
       href={props.href}
-      className='shadow-gray-700 w-[230px] block h-auto text-center rounded-md shadow'
+      className='text-mnWhite w-[230px] block overflow-hidden h-auto text-center rounded-md shadow'
     >
       <div className='relative'>
         <span className='absolute top-2 left-2 z-10 p-1 text-xs text-black bg-yellow-300 rounded'>
-          IMDB - {props.rating}
+          IMDB - {props.imdbRating}
         </span>
 
         <NextImage
@@ -27,7 +28,9 @@ export default function Card(props: CardProps) {
           alt={props.posterName}
         />
 
-        <span className='block py-2'>{props.title}</span>
+        <span className='block py-2'>
+          {props.title} ({props.releaseYear})
+        </span>
       </div>
     </UnstyledLink>
   );
