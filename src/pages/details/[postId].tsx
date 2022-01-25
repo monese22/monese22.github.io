@@ -1,13 +1,16 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import { getAllMovieIds, getMovieData } from '@/lib/posts';
+import { getAllMovieIds, getMovieData, MovieData } from '@/lib/posts';
 
+import Genre from '@/components/Genre';
 import NextImage from '@/components/NextImage';
 
 export default function MovieDetailPost({
   movieData,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: {
+  movieData: MovieData;
+}) {
   return (
     <>
       <Head>
@@ -22,12 +25,26 @@ export default function MovieDetailPost({
             height={251}
             alt={movieData.id}
           />
-          <section>
+
+          <section className='flex flex-col gap-2'>
             <h3>
-              {movieData.title} ({movieData.release})
+              {movieData.title} ({movieData.releaseYear})
             </h3>
-            <span className='pr-20'>IMDB - {movieData.imdbRating}</span>{' '}
-            <span>Duration: {movieData.duration}</span>
+
+            <div className='text-mnWhite/50'>
+              <span className='pr-20'>IMDB - {movieData.imdbRating}</span>{' '}
+              <span>Duration: {movieData.duration}</span>
+            </div>
+
+            <div className='flex gap-10'>
+              {movieData.genres.map((genre) => (
+                <Genre
+                  key={genre}
+                  genre={genre}
+                  className='border-mnWhite/50 text-mnWhite/50 px-4 py-1 rounded-full'
+                />
+              ))}
+            </div>
           </section>
         </div>
       </section>
