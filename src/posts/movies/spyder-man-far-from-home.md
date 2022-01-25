@@ -3,7 +3,7 @@ title: Spyder-Man - Far From Home
 imdbRating: 8.5
 releaseYear: 2020
 duration: 2H 09MIN
-genre:
+genres:
   - ACTION
   - ADVENTURE
   - SCI-FI
