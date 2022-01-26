@@ -5,5 +5,9 @@ export default function Genre({
   genre: string;
   className?: string;
 }) {
-  return <div className={className}>{genre}</div>;
+  return (
+    <div className={`border text-xs w-28 text-center ${className}`}>
+      {genre}
+    </div>
+  );
 }
