@@ -22,7 +22,9 @@ export default function Home({
 
 export async function getStaticProps() {
   const movieIds = getAllMovieIds();
-  const allMoviesData = movieIds.map((id) => getMovieData(id));
+  const allMoviesData = await Promise.all(
+    movieIds.map(async (id) => await getMovieData(id))
+  );
 
   return {
     props: {
