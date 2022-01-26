@@ -15,7 +15,7 @@ const dummyNavItems = [
 
 export default function Header() {
   return (
-    <header className='bg-mnHeaderBg text-mnWhite'>
+    <header className='bg-mnHeaderBg text-mnWhite sticky top-0'>
       <div className='max-w-[1160px] flex justify-between items-center py-2 mx-auto'>
         <UnstyledLink href='/' className='flex items-center'>
           <Image
