@@ -6,7 +6,7 @@ export default function Genre({
   className?: string;
 }) {
   return (
-    <div className={`border text-xs w-28 text-center ${className}`}>
+    <div className={`uppercase border text-xs w-28 text-center ${className}`}>
       {genre}
     </div>
   );
