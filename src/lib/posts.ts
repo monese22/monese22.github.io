@@ -8,17 +8,26 @@ import html from 'remark-html';
 // There will be a lot of duplication when implememt this for series
 // this file need to be refactor to reduce duplicate logics in functional way
 
+export type DownloadsType = {
+  server: string;
+  quality: string;
+  size: string;
+  link: string;
+};
+
 export type MovieData = {
   id: string;
   title: string;
   imdbRating: number;
   releaseYear: number;
+  date: string;
   duration: string;
   genres: string[];
   poster: {
     large: string;
     small: string;
   };
+  downloads: DownloadsType[];
   contentHtml: string;
 };
 
