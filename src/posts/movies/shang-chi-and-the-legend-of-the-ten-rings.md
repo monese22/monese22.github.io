@@ -2,14 +2,40 @@
 title: Shang Chi and The Legend of The Ten Rings
 imdbRating: 7.5
 releaseYear: 2021
-duration: 2H 12MIN
+date: '2022-01-26'
+duration: 2h 12min
 genres:
-  - ACTION
-  - ADVENTURE
-  - FANTASY
+  - action
+  - adventure
+  - fantasy
 poster:
   large: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-large.png'
   small: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-small.png'
+downloads:
+  - server: 'google drive'
+    quality: '1080p'
+    size: '1.2gb'
+    link: '#'
+  - server: 'google drive'
+    quality: '720p'
+    size: '800mb'
+    link: '#'
+  - server: 'mega'
+    quality: '1080p'
+    size: '1.2gb'
+    link: '#'
+  - server: 'mega'
+    quality: '720p'
+    size: '800mb'
+    link: '#'
+  - server: 'telegram'
+    quality: '1080p'
+    size: '1.2gb'
+    link: '#'
+  - server: 'telegram'
+    quality: '720p'
+    size: '800mb'
+    link: '#'
 ---
 
 ## Story Line

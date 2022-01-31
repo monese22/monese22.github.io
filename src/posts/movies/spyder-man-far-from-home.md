@@ -1,15 +1,41 @@
 ---
-title: Spyder-Man - Far From Home
+title: 'Spyder-Man - Far From Home'
 imdbRating: 8.5
 releaseYear: 2020
-duration: 2H 09MIN
+date: '2022-01-25'
+duration: 2h 09min
 genres:
-  - ACTION
-  - ADVENTURE
-  - SCI-FI
+  - action
+  - adventure
+  - sci-fi
 poster:
   large: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-large.jpg'
   small: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-small.png'
+downloads:
+  - server: 'google drive'
+    quality: '1080p'
+    size: '1.5gb'
+    link: '#'
+  - server: 'google drive'
+    quality: '720p'
+    size: '900mb'
+    link: '#'
+  - server: 'mega'
+    quality: '1080p'
+    size: '1.5gb'
+    link: '#'
+  - server: 'mega'
+    quality: '720p'
+    size: '900mb'
+    link: '#'
+  - server: 'telegram'
+    quality: '1080p'
+    size: '1.5gb'
+    link: '#'
+  - server: 'telegram'
+    quality: '720p'
+    size: '900mb'
+    link: '#'
 ---
 
 ## Story Line
