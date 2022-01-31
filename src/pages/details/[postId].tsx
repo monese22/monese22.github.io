@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { getAllMovieIds, getMovieData, MovieData } from '@/lib/posts';
 
 import Genre from '@/components/Genre';
+import Downloads from '@/components/layout/Downloads';
+import MainAds from '@/components/layout/MainAds';
 import NextImage from '@/components/NextImage';
 
 export default function MovieDetailPost({
@@ -12,13 +14,15 @@ export default function MovieDetailPost({
   movieData: MovieData;
 }) {
   return (
-    <>
+    <div className='max-w-[1160px] flex gap-4 mx-auto my-10 divide-x divide-solid'>
       <Head>
         <title>{movieData.title}</title>
       </Head>
 
-      <section className='max-w-[1160px] text-mnWhite mx-auto mt-5'>
-        <div className='flex space-x-4'>
+      {/* left section */}
+      <section className='basis-9/12 text-mnWhite space-y-10'>
+        {/* poster image and movies name */}
+        <section className='flex space-x-4'>
           <NextImage
             src={movieData.poster.small}
             width={168}
@@ -26,12 +30,13 @@ export default function MovieDetailPost({
             alt={movieData.id}
           />
 
-          <section className='flex flex-col gap-2'>
+          {/* wrapper for right side of the image */}
+          <div className='flex flex-col gap-2'>
             <h3>
               {movieData.title} ({movieData.releaseYear})
             </h3>
 
-            <div className='text-mnWhite/50'>
+            <div className='text-mnWhite/50 uppercase'>
               <span className='pr-20'>IMDB - {movieData.imdbRating}</span>{' '}
               <span>Duration: {movieData.duration}</span>
             </div>
@@ -45,10 +50,32 @@ export default function MovieDetailPost({
                 />
               ))}
             </div>
-          </section>
-        </div>
+
+            {/* TODO need to add watch trailer */}
+          </div>
+          {/* --- end of poster right side */}
+        </section>
+        {/* --- end of poster and movies title section  */}
+
+        {/* story line, ads and download section */}
+        <section className='space-y-10'>
+          {/* story line and cast */}
+          <div
+            className='space-y-4'
+            dangerouslySetInnerHTML={{ __html: movieData.contentHtml }}
+          />
+
+          <MainAds />
+          <Downloads downloads={movieData.downloads} />
+          <MainAds />
+        </section>
       </section>
-    </>
+      {/* --- end of left section */}
+
+      {/* right section */}
+      <section className='flex space-x-4'></section>
+      {/* --- end of the right section */}
+    </div>
   );
 }
 
@@ -67,11 +94,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.postId;
-  const movieData = getMovieData(id as string);
+  const movieData = await getMovieData(id as string);
+
+  const movieIds = getAllMovieIds();
+  const allMoviesData = await Promise.all(
+    movieIds.map(async (id) => await getMovieData(id))
+  );
 
   return {
     props: {
       movieData,
+      allMoviesData,
     },
   };
 };
