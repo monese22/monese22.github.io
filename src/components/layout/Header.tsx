@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import * as React from 'react';
 
 import UnstyledLink from '../links/UnstyledLink';
+import SiteLogo from '../SiteLogo';
 
 // this is dummy data for navigation bar, and it must be redesign
 const dummyNavItems = [
@@ -17,17 +17,7 @@ export default function Header() {
   return (
     <header className='bg-mnHeaderBg text-mnWhite sticky top-0 z-50'>
       <div className='max-w-[1160px] flex justify-between items-center py-2 mx-auto'>
-        <UnstyledLink href='/' className='flex items-center'>
-          <Image
-            src='/images/MoneseLogo.svg'
-            width={40}
-            height={40}
-            alt='monese-logo'
-            className='rounded-md'
-          />
-          <span className='pl-2 text-2xl font-semibold uppercase'>Monsese</span>
-        </UnstyledLink>
-        {/* This part need to change when implementing data */}
+        <SiteLogo />
         <nav className='text-mnWhite/80 text-semibold space-x-6'>
           {dummyNavItems.map((nav) => (
             <UnstyledLink
