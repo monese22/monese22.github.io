@@ -6,6 +6,7 @@ import { getAllMovieIds, getMovieData, MovieData } from '@/lib/posts';
 import Genre from '@/components/Genre';
 import Downloads from '@/components/layout/Downloads';
 import MainAds from '@/components/layout/MainAds';
+import SidePane from '@/components/layout/SidePane';
 import NextImage from '@/components/NextImage';
 
 export default function MovieDetailPost({
@@ -14,13 +15,13 @@ export default function MovieDetailPost({
   movieData: MovieData;
 }) {
   return (
-    <div className='max-w-[1160px] flex gap-4 mx-auto my-10 divide-x divide-solid'>
+    <div className='max-w-[1160px] flex gap-4 mx-auto my-10 space-x-12 divide-x divide-solid'>
       <Head>
         <title>{movieData.title}</title>
       </Head>
 
       {/* left section */}
-      <section className='basis-9/12 text-mnWhite space-y-10'>
+      <section className='basis-8/12 text-mnWhite space-y-10'>
         {/* poster image and movies name */}
         <section className='flex space-x-4'>
           <NextImage
@@ -73,7 +74,9 @@ export default function MovieDetailPost({
       {/* --- end of left section */}
 
       {/* right section */}
-      <section className='flex space-x-4'></section>
+      <section className='basis-3/12 space-y-8'>
+        <SidePane />
+      </section>
       {/* --- end of the right section */}
     </div>
   );
