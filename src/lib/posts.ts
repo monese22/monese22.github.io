@@ -31,7 +31,7 @@ export type MovieData = {
   contentHtml: string;
 };
 
-const POSTS_PATH = path.join(process.cwd(), 'src/posts');
+const POSTS_PATH = path.join(process.cwd(), 'contents');
 
 export async function getMovieData(id: string): Promise<MovieData> {
   const fullPath = path.join(POSTS_PATH, `/movies/${id}.md`);
