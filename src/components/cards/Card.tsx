@@ -1,5 +1,4 @@
 import UnstyledLink from '../links/UnstyledLink';
-import NextImage from '../NextImage';
 
 export type CardProps = {
   href: string; // route to detail page
@@ -21,7 +20,7 @@ export default function Card(props: CardProps) {
           IMDB - {props.imdbRating}
         </span>
 
-        <NextImage
+        <img
           src={props.posterPath}
           width={230}
           height={340}

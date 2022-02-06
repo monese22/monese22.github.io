@@ -1,11 +1,9 @@
-import Image from 'next/image';
-
 import UnstyledLink from './links/UnstyledLink';
 
 export default function SiteLogo() {
   return (
     <UnstyledLink href='/' className='flex gap-2 items-center'>
-      <Image
+      <img
         src={'/images/MoneseLogo.svg'}
         width={40}
         height={40}
