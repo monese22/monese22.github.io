@@ -1,6 +1,5 @@
-import Image from 'next/image';
-
 import UnstyledLink from '../links/UnstyledLink';
+
 export default function SidePaneCard() {
   const dummyData = {
     title: 'Spyder-Man - Far From Home',
@@ -14,7 +13,7 @@ export default function SidePaneCard() {
   return (
     <UnstyledLink href={dummyData.route} className='text-mnWhite block ml-4'>
       <div className='flex space-x-2'>
-        <Image src={dummyData.poster} width={110} height={170} alt={''} />
+        <img src={dummyData.poster} width={110} height={170} alt={''} />
         <div className='pt-2'>
           <p>
             {dummyData.title} ({dummyData.releaseYear})

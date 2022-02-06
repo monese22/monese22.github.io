@@ -7,7 +7,6 @@ import Genre from '@/components/Genre';
 import Downloads from '@/components/layout/Downloads';
 import MainAds from '@/components/layout/MainAds';
 import SidePane from '@/components/layout/SidePane';
-import NextImage from '@/components/NextImage';
 
 export default function MovieDetailPost({
   movieData,
@@ -24,7 +23,7 @@ export default function MovieDetailPost({
       <section className='basis-8/12 text-mnWhite space-y-10'>
         {/* poster image and movies name */}
         <section className='flex space-x-4'>
-          <NextImage
+          <img
             src={movieData.poster.small}
             width={168}
             height={251}

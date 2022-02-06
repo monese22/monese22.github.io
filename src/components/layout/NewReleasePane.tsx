@@ -1,18 +1,4 @@
 import Button from '../buttons/Button';
-import NextImage from '../NextImage';
-
-// type of props for each of the movie
-// type MovieProps = {
-//   title: string,
-//   href: string,
-//   posterPath: string,
-//   posterName: string,
-// }
-
-// // type of props for all new release movies
-// type NewReleaseProps = {
-//   newReleases: MovieProps[],
-// }
 
 export default function NewReleasePane() {
   return (
@@ -21,7 +7,7 @@ export default function NewReleasePane() {
 
       <span className='text-mnWhite text-lg font-semibold'>New releases:</span>
       <div className='h-[400px] max-w-[1160px] overflow-hidden relative mt-1 rounded-xl'>
-        <NextImage
+        <img
           src='/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-large.png'
           width={1160}
           height={400}

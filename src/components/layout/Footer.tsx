@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Button from '../buttons/Button';
 import UnstyledLink from '../links/UnstyledLink';
-import NextImage from '../NextImage';
 
 const images = [
   { name: '/images/YouTube.svg' },
@@ -17,7 +16,7 @@ export default function Footer() {
       <div className='flex flex-col items-center'>
         {/* Logo */}
         <UnstyledLink href='/'>
-          <NextImage
+          <img
             src='/images/MoneseLogo.svg'
             width={95}
             height={95}
@@ -31,7 +30,7 @@ export default function Footer() {
         <div className='flex'>
           {/* need hyperlink to link to the social media */}
           {images.map((img) => (
-            <NextImage
+            <img
               key={img.name}
               src={img.name}
               height={40}
