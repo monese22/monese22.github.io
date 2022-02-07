@@ -1,8 +1,8 @@
 import { MovieData } from 'lib/posts';
 
-import Card from '../cards/Card';
+import Card from '../card/Card';
 
-export default function Movies({
+export default function Cards({
   allMoviesData,
 }: {
   allMoviesData: MovieData[];

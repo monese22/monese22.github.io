@@ -1,10 +1,12 @@
 import * as React from 'react';
 
-import { getAllMovieIds, getMovieData, MovieData } from '@/lib/posts';
+import { getAllMovieIds, getMovieData } from '@/lib/posts';
 
+import Cards from '@/components/layout/Cards';
 import MainAds from '@/components/layout/MainAds';
-import Movies from '@/components/layout/Movies';
 import NewReleasePane from '@/components/layout/NewReleasePane';
+
+import { MovieData } from '@/types';
 
 export default function Home({
   allMoviesData,
@@ -15,7 +17,7 @@ export default function Home({
     <div className='max-w-[1140px] flex flex-col gap-16 mx-auto mt-10'>
       <NewReleasePane />
       <MainAds />
-      <Movies allMoviesData={allMoviesData} />
+      <Cards allMoviesData={allMoviesData} />
     </div>
   );
 }
