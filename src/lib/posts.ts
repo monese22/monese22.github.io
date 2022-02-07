@@ -4,37 +4,51 @@ import path from 'path';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-// TODO
-// There will be a lot of duplication when implememt this for series
-// this file need to be refactor to reduce duplicate logics in functional way
+import { Category, MovieData } from '@/types';
 
-export type DownloadsType = {
-  server: string;
-  quality: string;
-  size: string;
-  link: string;
+const POST_PATH = path.join(process.cwd(), 'contents');
+
+export const compose =
+  (...fns: any[]) =>
+  (arg: any) =>
+    fns.reduce((i, f) => f(i), arg);
+
+const contentPath = (category: Category) =>
+  path.join(process.cwd(), `contents/${category}`);
+
+const getId = (fileName: string) => fileName.replace(/.md$/, '');
+
+const getFileContent = (filePath: string) => fs.readFileSync(filePath, 'utf8');
+
+export const getAllFileNames = (dir: string) => fs.readdirSync(dir);
+
+export const getAllId = (fileNames: string[]) => fileNames.map(getId);
+
+export const getSortedAllData = (dir: string) => {
+  const fileNames = getAllFileNames(dir);
+  const allData = fileNames.map((fileName) => {
+    const id = getId(fileName);
+    const fullPath = path.join(dir, fileName);
+    const matterResult = compose(getFileContent, matter)(fullPath);
+    return {
+      id,
+      ...matterResult.data,
+    } as MovieData;
+  });
+
+  return allData.sort(({ date: a }, { date: b }) => {
+    if (a < b) {
+      return 1;
+    } else if (a > b) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 };
-
-export type MovieData = {
-  id: string;
-  title: string;
-  imdbRating: number;
-  releaseYear: number;
-  date: string;
-  duration: string;
-  genres: string[];
-  poster: {
-    large: string;
-    small: string;
-  };
-  downloads: DownloadsType[];
-  contentHtml: string;
-};
-
-const POSTS_PATH = path.join(process.cwd(), 'contents');
 
 export async function getMovieData(id: string): Promise<MovieData> {
-  const fullPath = path.join(POSTS_PATH, `/movies/${id}.md`);
+  const fullPath = path.join(POST_PATH, `/movies/${id}.md`);
   const fileContent = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContent);
 
@@ -49,6 +63,6 @@ export async function getMovieData(id: string): Promise<MovieData> {
 }
 
 export function getAllMovieIds() {
-  const fileNames = fs.readdirSync(`${POSTS_PATH}/movies`);
+  const fileNames = fs.readdirSync(contentPath('movies'));
   return fileNames.map((fileName) => fileName.replace(/.md$/, ''));
 }
