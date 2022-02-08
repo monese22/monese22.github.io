@@ -1,12 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import { getAllMovieIds, getMovieData, MovieData } from '@/lib/posts';
+import { getAllMovieIds, getMovieData } from '@/lib/posts';
 
 import Genre from '@/components/Genre';
 import Downloads from '@/components/layout/Downloads';
 import MainAds from '@/components/layout/MainAds';
 import SidePane from '@/components/layout/SidePane';
+
+import { MovieData } from '@/types';
 
 export default function MovieDetailPost({
   movieData,
@@ -85,7 +87,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const postIds = getAllMovieIds();
   const paths = postIds.map((id) => ({
     params: {
-      postId: id,
+      movieId: id,
     },
   }));
   return {
@@ -95,7 +97,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = params?.postId;
+  const id = params?.movieId;
   const movieData = await getMovieData(id as string);
 
   const movieIds = getAllMovieIds();
