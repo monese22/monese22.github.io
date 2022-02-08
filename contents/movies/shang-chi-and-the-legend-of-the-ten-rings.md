@@ -9,8 +9,8 @@ genres:
   - adventure
   - fantasy
 poster:
-  large: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-large.png'
-  small: '/images/posters/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-small.png'
+  large: '/images/posters/movies/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-large.png'
+  small: '/images/posters/movies/shang-chi-and-the-legend-of-the-ten-rings/shang-chi-small.png'
 downloads:
   - server: 'google drive'
     quality: '1080p'

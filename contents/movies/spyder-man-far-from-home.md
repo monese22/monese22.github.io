@@ -9,8 +9,8 @@ genres:
   - adventure
   - sci-fi
 poster:
-  large: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-large.jpg'
-  small: '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-small.png'
+  large: '/images/posters/movies/spyder-man-far-from-home/spyder-man-far-from-home-large.jpg'
+  small: '/images/posters/movies/spyder-man-far-from-home/spyder-man-far-from-home-small.png'
 downloads:
   - server: 'google drive'
     quality: '1080p'
