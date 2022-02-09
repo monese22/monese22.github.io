@@ -20,5 +20,5 @@ export type MovieData = {
     small: string;
   };
   downloads: DownloadsType[];
-  contentHtml: string;
+  contentHtml?: string;
 };
