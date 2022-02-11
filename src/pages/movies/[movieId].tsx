@@ -35,7 +35,7 @@ export default function MovieDetailPost({
             src={movieData.poster.small}
             width={168}
             height={251}
-            alt={movieData.id}
+            alt={movieData.slug}
           />
 
           {/* wrapper for right side of the image */}
@@ -111,8 +111,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = params?.movieId;
-  const movieData = await getData('movies')(id as string);
+  const file = params?.movieId + '.md';
+  const movieData = await getData('movies')(file as string);
 
   return {
     props: {

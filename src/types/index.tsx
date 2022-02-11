@@ -8,7 +8,7 @@ export type DownloadsType = {
 export type Category = 'movies' | 'series' | 'shorts';
 
 export type MovieData = {
-  id: string;
+  slug: string;
   title: string;
   imdbRating: number;
   releaseYear: number;
