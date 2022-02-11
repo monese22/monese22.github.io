@@ -5,7 +5,7 @@ import {
   compose,
   contentPath,
   getAllFileNames,
-  getAllId,
+  getAllSlugs,
   getData,
 } from '@/lib/posts';
 
@@ -22,7 +22,7 @@ export default function MovieDetailPost({
   movieData: MovieData;
 }) {
   return (
-    <div className='max-w-[1160px] flex gap-4 mx-auto my-10 space-x-12 divide-x divide-solid'>
+    <div className='max-w-[1160px] flex gap-4 mx-auto space-x-12 divide-x divide-solid'>
       <Head>
         <title>{movieData.title}</title>
       </Head>
@@ -97,7 +97,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const moviesId: string[] = compose(
     contentPath,
     getAllFileNames,
-    getAllId
+    getAllSlugs
   )('movies');
   const paths = moviesId.map((id) => ({
     params: {

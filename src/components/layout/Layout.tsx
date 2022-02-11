@@ -8,7 +8,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='bg-mnBg'>
       <Header />
-      {children}
+      <div className='max-w-[1140px] flex flex-col gap-16 mx-auto mt-10'>
+        {children}
+      </div>
       <Footer />
     </div>
   );
