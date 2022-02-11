@@ -1,4 +1,4 @@
-type DownloadsType = {
+export type DownloadsType = {
   server: string;
   quality: string;
   size: string;

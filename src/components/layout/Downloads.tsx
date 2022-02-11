@@ -1,6 +1,6 @@
-import { DownloadsType } from '@/lib/posts';
-
 import Table from '../tables/Table';
+
+import { DownloadsType } from '@/types';
 
 const tableHeader = ['server', 'quality', 'size', 'link'];
 
