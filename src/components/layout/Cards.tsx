@@ -1,16 +1,18 @@
-import { MovieData } from 'lib/posts';
-
 import Card from '../card/Card';
+
+import { Category, MovieData } from '@/types';
 
 export default function Cards({
   allMoviesData,
+  category,
 }: {
   allMoviesData: MovieData[];
+  category: Category;
 }) {
   return (
     <div className='grid grid-cols-2 gap-y-10 gap-x-20 md:grid-cols-4'>
       {allMoviesData.map((data) => {
-        const href = `/details/${data.id}`;
+        const href = `/${category}/${data.id}`;
         return (
           <Card
             key={data.title}

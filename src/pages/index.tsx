@@ -1,6 +1,12 @@
 import * as React from 'react';
 
-import { getAllMovieIds, getMovieData } from '@/lib/posts';
+import {
+  compose,
+  contentPath,
+  getAllFileNames,
+  getAllSlugs,
+  getData,
+} from '@/lib/posts';
 
 import Cards from '@/components/layout/Cards';
 import MainAds from '@/components/layout/MainAds';
@@ -17,15 +23,19 @@ export default function Home({
     <div className='max-w-[1140px] flex flex-col gap-16 mx-auto mt-10'>
       <NewReleasePane />
       <MainAds />
-      <Cards allMoviesData={allMoviesData} />
+      <Cards allMoviesData={allMoviesData} category='movies' />
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const movieIds = getAllMovieIds();
+  const movieIds: string[] = compose(
+    contentPath,
+    getAllFileNames,
+    getAllSlugs
+  )('movies');
   const allMoviesData = await Promise.all(
-    movieIds.map(async (id) => await getMovieData(id))
+    movieIds.map((id) => getData('movies')(id))
   );
 
   return {
