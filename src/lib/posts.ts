@@ -6,28 +6,29 @@ import html from 'remark-html';
 
 import { Category, MovieData } from '@/types';
 
-const POST_PATH = path.join(process.cwd(), 'contents');
-
 export const compose =
   (...fns: any[]) =>
   (arg: any) =>
     fns.reduce((i, f) => f(i), arg);
 
-const contentPath = (category: Category) =>
+export const contentPath = (category: Category) =>
   path.join(process.cwd(), `contents/${category}`);
 
-const getId = (fileName: string) => fileName.replace(/.md$/, '');
+const fullPath = (fileName: string) => (filePath: string) =>
+  path.join(filePath, fileName);
+
+const getSlug = (fileName: string) => fileName.replace(/.md$/, '');
 
 const getFileContent = (filePath: string) => fs.readFileSync(filePath, 'utf8');
 
 export const getAllFileNames = (dir: string) => fs.readdirSync(dir);
 
-export const getAllId = (fileNames: string[]) => fileNames.map(getId);
+export const getAllSlugs = (fileNames: string[]) => fileNames.map(getSlug);
 
 export const getSortedAllData = (dir: string) => {
   const fileNames = getAllFileNames(dir);
   const allData = fileNames.map((fileName) => {
-    const id = getId(fileName);
+    const id = getSlug(fileName);
     const fullPath = path.join(dir, fileName);
     const matterResult = compose(getFileContent, matter)(fullPath);
     return {
@@ -47,10 +48,14 @@ export const getSortedAllData = (dir: string) => {
   });
 };
 
-export async function getMovieData(id: string): Promise<MovieData> {
-  const fullPath = path.join(POST_PATH, `/movies/${id}.md`);
-  const fileContent = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContent);
+export const getData = (cat: Category) => async (id: string) => {
+  const fileName = `${id}.md`;
+  const { data, content } = compose(
+    contentPath,
+    fullPath(fileName),
+    getFileContent,
+    matter
+  )(cat);
 
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
@@ -60,9 +65,4 @@ export async function getMovieData(id: string): Promise<MovieData> {
     ...data,
     contentHtml,
   } as MovieData;
-}
-
-export function getAllMovieIds() {
-  const fileNames = fs.readdirSync(contentPath('movies'));
-  return fileNames.map((fileName) => fileName.replace(/.md$/, ''));
-}
+};

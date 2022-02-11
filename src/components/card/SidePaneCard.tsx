@@ -6,8 +6,8 @@ export default function SidePaneCard() {
     imdbRating: 8.5,
     releaseYear: 2020,
     poster:
-      '/images/posters/spyder-man-far-from-home/spyder-man-far-from-home-small.png',
-    route: '/details/spyder-man-far-from-home',
+      '/images/posters/movies/spyder-man-far-from-home/spyder-man-far-from-home-small.png',
+    route: '/movies/spyder-man-far-from-home',
   };
 
   return (

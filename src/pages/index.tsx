@@ -20,11 +20,11 @@ export default function Home({
   allMoviesData: MovieData[];
 }) {
   return (
-    <div className='max-w-[1140px] flex flex-col gap-16 mx-auto mt-10'>
+    <>
       <NewReleasePane />
       <MainAds />
       <Cards allMoviesData={allMoviesData} category='movies' />
-    </div>
+    </>
   );
 }
 
