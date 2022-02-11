@@ -2,11 +2,11 @@ import UnstyledLink from './links/UnstyledLink';
 
 // TODO
 // this is dummy data for navigation bar, and it must be redesign
-const dummyNavItems = [
+const navItems = [
   'Movies',
   'Series',
   'Shorts',
-  'Genere',
+  'Genres',
   'Years',
   'How to Download',
 ];
@@ -14,9 +14,9 @@ const dummyNavItems = [
 export default function Navigations() {
   return (
     <nav className='text-mnWhite/80 text-semibold space-x-6'>
-      {dummyNavItems.map((nav) => (
+      {navItems.map((nav) => (
         <UnstyledLink
-          href='#'
+          href={`/${nav.toLowerCase().replace(/ /g, '-')}`}
           key={nav}
           className='font-semibold transition hover:text-white'
         >

@@ -1,16 +1,11 @@
 import MainAds from '@/components/layout/MainAds';
 
-export default function Movies() {
+export default function Series() {
   return (
     <div>
       <MainAds />
+
       <MainAds />
     </div>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
 }
