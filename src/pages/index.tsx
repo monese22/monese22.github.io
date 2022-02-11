@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
   compose,
   contentPath,
+  getAllData,
   getAllFileNames,
-  getAllSlugs,
-  getData,
+  sortedAllData,
 } from '@/lib/posts';
 
 import Cards from '@/components/layout/Cards';
@@ -29,13 +29,13 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  const movieIds: string[] = compose(
-    contentPath,
-    getAllFileNames,
-    getAllSlugs
-  )('movies');
   const allMoviesData = await Promise.all(
-    movieIds.map((id) => getData('movies')(id))
+    compose(
+      contentPath,
+      getAllFileNames,
+      getAllData('movies'),
+      sortedAllData
+    )('movies')
   );
 
   return {
