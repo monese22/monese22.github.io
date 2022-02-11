@@ -12,7 +12,7 @@ export default function Cards({
   return (
     <div className='grid grid-cols-2 gap-y-10 gap-x-20 md:grid-cols-4'>
       {allMoviesData.map((data) => {
-        const href = `/${category}/${data.id}`;
+        const href = `/${category}/${data.slug}`;
         return (
           <Card
             key={data.title}
