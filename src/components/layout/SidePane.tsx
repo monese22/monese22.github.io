@@ -1,4 +1,4 @@
-import SidePaneCard from '../cards/SidePaneCard';
+import SidePaneCard from '../card/SidePaneCard';
 
 export default function SidePane() {
   return (

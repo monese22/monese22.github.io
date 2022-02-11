@@ -1,12 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import { getAllMovieIds, getMovieData, MovieData } from '@/lib/posts';
+import {
+  compose,
+  contentPath,
+  getAllFileNames,
+  getAllId,
+  getData,
+} from '@/lib/posts';
 
 import Genre from '@/components/Genre';
 import Downloads from '@/components/layout/Downloads';
 import MainAds from '@/components/layout/MainAds';
 import SidePane from '@/components/layout/SidePane';
+
+import { MovieData } from '@/types';
 
 export default function MovieDetailPost({
   movieData,
@@ -60,10 +68,14 @@ export default function MovieDetailPost({
         {/* story line, ads and download section */}
         <section className='space-y-10'>
           {/* story line and cast */}
-          <div
-            className='space-y-4'
-            dangerouslySetInnerHTML={{ __html: movieData.contentHtml }}
-          />
+          {movieData.contentHtml ? (
+            <div
+              className='space-y-4'
+              dangerouslySetInnerHTML={{ __html: movieData.contentHtml }}
+            />
+          ) : (
+            { undefined }
+          )}
 
           <MainAds />
           <Downloads downloads={movieData.downloads} />
@@ -82,10 +94,14 @@ export default function MovieDetailPost({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postIds = getAllMovieIds();
-  const paths = postIds.map((id) => ({
+  const moviesId: string[] = compose(
+    contentPath,
+    getAllFileNames,
+    getAllId
+  )('movies');
+  const paths = moviesId.map((id) => ({
     params: {
-      postId: id,
+      movieId: id,
     },
   }));
   return {
@@ -95,18 +111,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = params?.postId;
-  const movieData = await getMovieData(id as string);
-
-  const movieIds = getAllMovieIds();
-  const allMoviesData = await Promise.all(
-    movieIds.map(async (id) => await getMovieData(id))
-  );
+  const id = params?.movieId;
+  const movieData = await getData('movies')(id as string);
 
   return {
     props: {
       movieData,
-      allMoviesData,
     },
   };
 };
